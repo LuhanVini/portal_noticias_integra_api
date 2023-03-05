@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Portal de Notícias</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/script.js"></script>
+
+  </head>
+  <body>
+    <header>
+      <h1>Portal de Notícias</h1>
+    </header>
+    <nav>
+      <a href="#" data-category="general">Geral</a>
+      <a href="#" data-category="business">Negócios</a>
+      <a href="#" data-category="entertainment">Entretenimento</a>
+      <a href="#" data-category="health">Saúde</a>
+      <a href="#" data-category="science">Ciência</a>
+      <a href="#" data-category="sports">Esportes</a>
+      <a href="#" data-category="technology">Tecnologia</a>
+    </nav>
+    <main></main>
+    <footer>
+      <section>
+        <div id="noticias">
+          
+
+        </div>
+      </section>
+    </footer>
+
+    <script>
+      // Obtenha a referência para o elemento principal
+      const main = document.querySelector('main');
+
+      // Defina a chave da API do News API
+      const apiKey = '668c29c057b846dea44b8b39be7304b4';
+
+      // Ouça os cliques nos links do menu
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', event => {
+          event.preventDefault();
+          const article = link.getAttribute('article.autor');
+          carregarNoticias(autor);
+        });
+      });
+
+      // Carregue as notícias da API
+      function carregarNoticias(autor) {
+        // Construa a URL da API com a categoria desejada e a chave da API
+        const url = `https://newsapi.org/v2/top-headlines?country=br&category=${category}&apiKey=${apiKey}`;
+        // Faça uma chamada para a API
+        fetch
